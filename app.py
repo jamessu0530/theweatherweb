@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -39,3 +40,6 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    port = int(os.getenv('PORT', 5000))  # 預設埠號為 5000
+    app.run(host='0.0.0.0', port=port)  # 確保綁定到 0.0.0.0
+    
